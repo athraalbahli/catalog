@@ -1,4 +1,4 @@
-# Logs Analysis Poject
+# Catalog Poject
 
 This is a Flask application that implement CURD functionality on along with a third-party authentication & authorization service and also provide JSON endpoint 
 
