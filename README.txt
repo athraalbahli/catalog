@@ -11,6 +11,10 @@ in order to run this poject you have to install some tools and have a linux envi
 * [python3](https://www.python.org/)
 * [virtualBox](https://www.virtualbox.org/wiki/Downloads)
 * [vagrant](https://www.vagrantup.com/downloads.html)
+* [Flask](http://flask.pocoo.org/)
+* [sqlalchemy](https://www.sqlalchemy.org/)
+* [oauth2client](https://oauth2client.readthedocs.io/en/latest/)
+* [flask-bootstrap] (https://pythonhosted.org/Flask-Bootstrap/)
 
 
 ### Instructions
@@ -32,19 +36,29 @@ in order to run this poject you have to install some tools and have a linux envi
  	```
  	sudo apt-get update && sudo apt-get upgrade
  	```
+
 5. cd into the vagrant directory and load the data
  	```
  	cd /vagrant
- 	psql -d news -f newsdata.sql
  	```
 6. clone the the repository
  	```
- 	https://github.com/athraalbahli/logs_analysis.git
+ 	https://github.com/athraalbahli/catalog.git
  	```
 
- 7. cd into the project and run the python file
+ 7. cd into the project
  	```
- 	cd logs_analysis
- 	python3 report.py
+ 	cd catalog
+ 	```
+ 8. install the required module and packages to run this application
+  	```
+ 	pip3 install Flask
+ 	pip3 install flask-bootstrap
+ 	pip install sqlalchemy
+ 	pip3 install oauth2client 
  	```
 
+9. run the application
+   ```
+   python3 app.py
+   ```
