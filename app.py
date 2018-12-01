@@ -129,8 +129,9 @@ def gdisconnect():
             json.dumps('Current user not connected.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
-    url = 'https://accounts.google.com/o/oauth2/revoke?token={}'
-    .format(access_token)
+    url = '''
+    https://accounts.google.com/o/oauth2/revoke?token={}
+    '''.format(access_token)
     print(url)
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
@@ -180,8 +181,8 @@ def getUserID(email):
 @app.route('/catalog')
 def showCategories():
     categories = session.query(Category).all()
-    items = session.query(CategoryItem).join(Category)
-    .order_by(desc(CategoryItem.id)).limit(9).all()
+    items = session.query(CategoryItem).join
+    (Category).order_by(desc(CategoryItem.id)).limit(9).all()
     return render_template(
         'categories.html',
         categories=categories, items=items
@@ -194,8 +195,7 @@ def showCategories():
 def showItems(category_name):
     categories = session.query(Category).all()
     cat = session.query(Category).filter_by(name=category_name).one()
-    items = session.query(CategoryItem).filter_by(category_id=cat.id)
-    .join(Category).all()
+    items = session.query(CategoryItem).filter_by(category_id=cat.id).join(Category).all()
     return render_template(
         'items.html',
         items=items,
@@ -246,8 +246,7 @@ def newCategoryItem():
                 )
             session.add(newItem)
             session.commit()
-            category = session.query(Category)
-            .filter_by(id=newItem.category_id).one()
+            category = session.query(Category).filter_by(id=newItem.category_id).one()
             flash("Category item has been added")
             return redirect(url_for(
                 'showItem',
@@ -267,8 +266,7 @@ def editCategoryItem(item_name):
     if 'username' not in login_session:
         return redirect('/login')
     else:
-        item = session.query(CategoryItem)
-        .filter_by(name=item_name).join(Category).one()
+        item = session.query(CategoryItem).filter_by(name=item_name).join(Category).one()
         # prevent user from editig another user's item
         if(login_session['user_id'] != item.user_id):
             return render_template('403.html')
@@ -299,8 +297,7 @@ def deleteCategoryItem(item_name):
     if 'username' not in login_session:
         return redirect('/login')
     else:
-        itemToDelete = session.query(CategoryItem)
-        .filter_by(name=item_name).join(Category).one()
+        itemToDelete = session.query(CategoryItem).filter_by(name=item_name).join(Category).one()
         # prevent user from deleteing another user's item
         if(login_session['user_id'] != itemToDelete.user_id):
             return render_template('403.html')
