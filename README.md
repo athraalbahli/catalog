@@ -5,7 +5,7 @@ This is a Flask application that implement CURD functionality and third-party au
 ## Permission
 
 - Only logged in user can add new items
-- User can edit or delet his own items only 
+- User can edit or delete his own items only 
 
 ## Getting Started
 
