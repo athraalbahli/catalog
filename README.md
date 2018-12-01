@@ -1,6 +1,11 @@
 # Catalog Poject
 
-This is a Flask application that implement CURD functionality on along with a third-party authentication & authorization service and also provide JSON endpoint 
+This is a Flask application that implement CURD functionality and third-party authentication & authorization for login and user permissions.
+
+## Permission
+
+- Only logged in user can add new items
+- User can edit or delet his own items only 
 
 ## Getting Started
 
@@ -14,7 +19,7 @@ in order to run this poject you have to install some tools and have a linux envi
 * [Flask](http://flask.pocoo.org/)
 * [sqlalchemy](https://www.sqlalchemy.org/)
 * [oauth2client](https://oauth2client.readthedocs.io/en/latest/)
-* [flask-bootstrap] (https://pythonhosted.org/Flask-Bootstrap/)
+* [flask-bootstrap](https://pythonhosted.org/Flask-Bootstrap/)
 
 
 ### Instructions
@@ -54,7 +59,7 @@ in order to run this poject you have to install some tools and have a linux envi
   	```
  	pip3 install Flask
  	pip3 install flask-bootstrap
- 	pip install sqlalchemy
+ 	pip3 install sqlalchemy
  	pip3 install oauth2client 
  	```
 
@@ -62,3 +67,9 @@ in order to run this poject you have to install some tools and have a linux envi
    ```
    python3 app.py
    ```
+
+ ## API endpoints
+ - /catalog/JSON 
+ - /catalog/categories/JSON
+ - /catalog/items/JSON
+ 
