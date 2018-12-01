@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}
+	Catalog App
+{% endblock %}
+{% block content %}
+<div class="container">
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-success alert-dismissible" role="alert">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<strong>congratulation!</strong> {{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading clearfix">
+		  		<h3 class="panel-title pull-left" style="padding-top: 7.5px;">Categories</h3>
+		  		<div class="btn-group pull-right">
+		  		</div>
+		  	</div>
+		  	<div class="panel-body">
+			{% for category in categories %}
+    			<li>
+    				<a href="{{url_for('showItems',category_name = category.name)}}">{{category.name}}</a> 
+    			</li>
+			{% endfor %}
+		  	</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading clearfix">
+			{% if items|length > 0 %}
+				<h4 class="panel-title pull-left" style="padding-top: 7.5px;">{{items[0].category.name}} Items ({{items|length}} items)</h4>
+		  	{% else %}
+		  		<h4 class="panel-title pull-left" style="padding-top: 7.5px;">{{ category_name }} Items (0 items)</h4>
+			{% endif %}
+			    <div class="btn-group pull-right">
+			    {% if (session['username']) %}
+        			<a href="{{url_for('newCategoryItem')}}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        		{% endif %}
+      			</div> 
+		  	</div>
+		  	<div class="panel-body">
+			{% for item in items %}
+    			<li>
+    				<a href="{{url_for('showItem',category_name = item.category.name,item_name =item.name )}}">{{item.name}}</a>
+    			</li>
+			{% endfor %}
+		  	</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %} 
+
+
