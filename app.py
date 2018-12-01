@@ -15,7 +15,7 @@ import requests
 app = Flask(__name__)
 Bootstrap(app)
 
-ID = json.loads(open('client_secrets.json', 'r', encoding='utf-8').read())
+ID = json.loads(open('client_secrets.json', 'r').read())
 CLIENT_ID = ID['web']['client_id']
 APPLICATION_NAME = "catalogApp"
 
